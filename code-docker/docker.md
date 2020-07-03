@@ -1,4 +1,4 @@
-docker 配置远程连接端口
+### Docker 配置远程连接端口
 
 1. 修改宿主机配置文件
 
@@ -36,7 +36,7 @@ docker 配置远程连接端口
 
 
 
-Docker 部署 springboot 项目
+### Docker 部署 springboot 项目
 
 1. 打包 springboot 项目
 
@@ -46,30 +46,29 @@ Docker 部署 springboot 项目
 
 2. 创建 Dockerfile 文件
 
-```dockerfile
-# 基于 Java 8 的环境
-FROM java:8
+   ```dockerfile
+   # 基于 Java 8 的环境
+   FROM java:8
+   
+   # 维护者信息
+   MAINTAINER sixkery
+    
+    # 把 jar 包复制到镜像服务中的根目录,改名为 app.jar
+   ADD *.jar /app.jar
+   
+   # 执行创建 app.jar
+   RUN bash -c 'touch /app.jar'
+   
+   # 对外暴露的端口
+   EXPOSE 8080
+   
+   # 运行
+   ENTRYPOINT ["java", "-jar", "app.jar"] 
+   ```
 
-# 维护者信息
-MAINTAINER sixkery
- 
- # 把 jar 包复制到镜像服务中的根目录,改名为 app.jar
-ADD *.jar /app.jar
+3. 把 springboot 打的 jar 包和 Dockerfile 文件放在同一个文件夹 vueblog 下。
 
-# 执行创建 app.jar
-RUN bash -c 'touch /app.jar'
-
-# 对外暴露的端口
-EXPOSE 8080
-
-# 运行
-ENTRYPOINT ["java", "-jar", "app.jar"] 
-
-```
-
-3. 把 springboot 打的包和 Dockerfile 放在一个文件夹 vueblog 下.
-
-4. 进入文件夹 vueblog 下构建镜像
+4. 进入文件夹 vueblog 下构建镜像。
 
    ```shell
    docker build -t vueblog .
@@ -83,6 +82,9 @@ ENTRYPOINT ["java", "-jar", "app.jar"]
 
    ```shell
    docker run -p 8080:8080 -d vueblog
+   
+   -p: 主机端口:容器端口
+   -d: 后台运行，并返回容器 ID
+   --name="vueblog": 为容器指定一个名称 
    ```
 
-   
