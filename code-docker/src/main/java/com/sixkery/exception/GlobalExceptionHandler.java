@@ -24,6 +24,7 @@ public class GlobalExceptionHandler {
 
     /**
      * 捕获shiro异常
+     *
      * @param e 异常
      * @return 错误信息
      */
@@ -36,6 +37,7 @@ public class GlobalExceptionHandler {
 
     /**
      * 捕获运行时异常
+     *
      * @param e 异常
      * @return 错误信息
      */
@@ -48,6 +50,7 @@ public class GlobalExceptionHandler {
 
     /**
      * 捕获 from 属性验证异常
+     *
      * @param e 异常
      * @return 错误信息
      */
@@ -62,6 +65,7 @@ public class GlobalExceptionHandler {
 
     /**
      * 捕获 Assert 的异常
+     *
      * @param e 异常
      * @return 错误信息
      */

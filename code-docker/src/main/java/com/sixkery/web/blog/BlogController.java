@@ -36,6 +36,7 @@ public class BlogController {
     public ResponseModel<Boolean> inset(@RequestBody @Validated BlogFrom blogFrom) {
         return ResponseModels.ok(blogService.insert(blogFrom));
     }
+
     @GetMapping("/{blogId}")
     public ResponseModel<BlogModel> findOne(@PathVariable String blogId) {
         return ResponseModels.ok(blogService.findOne(blogId));

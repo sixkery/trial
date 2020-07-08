@@ -28,7 +28,6 @@ public class UserController {
     private UserService userService;
 
 
-
     @PostMapping
     public ResponseModel<Boolean> save(@Validated @RequestBody UserFrom from) {
         return ResponseModels.ok(userService.inset(from));

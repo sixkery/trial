@@ -46,7 +46,7 @@ public class AccountController {
 
         UserModel userModel = new UserModel();
         BeanUtils.copyProperties(user, userModel);
-            return ResponseModels.ok(userModel);
+        return ResponseModels.ok(userModel);
     }
 
     @RequiresAuthentication
