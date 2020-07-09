@@ -5,6 +5,7 @@
       <module fileurl="file://$PROJECT_DIR$/base.iml" filepath="$PROJECT_DIR$/base.iml" />
       <module fileurl="file://$PROJECT_DIR$/code-docker/code-docker.iml" filepath="$PROJECT_DIR$/code-docker/code-docker.iml" />
       <module fileurl="file://$PROJECT_DIR$/code-redis/code-redis.iml" filepath="$PROJECT_DIR$/code-redis/code-redis.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code-security/code-security.iml" filepath="$PROJECT_DIR$/code-security/code-security.iml" />
     </modules>
   </component>
 </project>
