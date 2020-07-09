@@ -1,90 +1,63 @@
-### Docker 配置远程连接端口
-
-1. 修改宿主机配置文件
-
-   ```shell
-   vim /lib/systemd/system/docker.service
-   ```
-
-2. 在 ExecStart 开头的这一行末尾添加 `-H tcp://0.0.0.0:2375`
-
-   ![001](./images/001.png)
-
-3. 重启 docker
-
-   ```shell
-   systemctl daemon-reload
-   
-   systemctl restart docker
-   ```
-
-4. 防火墙开启端口
-
-   ```shell
-   firewall-cmd --zone =public --add-port=2375/tcp --permanent
-   ```
-
-5. 通过外网访问 : 
-
-   ```shell
-   http://localhost/:2375/version
-   ```
-
-   
-
-   ![image-20200702230756567](./images/002.png)
-
-
-
 ### Docker 部署 springboot 项目
 
-1. 打包 springboot 项目
+1. 打包 springboot 项目。
 
    ```shell
-   mvn clean package -Dmaven.test.skip=true
+   $ mvn clean package -Dmaven.test.skip=true
    ```
 
 2. 创建 Dockerfile 文件
 
    ```dockerfile
-   # 基于 Java 8 的环境
-   FROM java:8
+   # 基础镜像
+   FROM jdk:8
    
-   # 维护者信息
-   MAINTAINER sixkery
-    
-    # 把 jar 包复制到镜像服务中的根目录,改名为 app.jar
-   ADD *.jar /app.jar
+   # 作者信息
+   MAINTAINER "sixkery"
    
-   # 执行创建 app.jar
-   RUN bash -c 'touch /app.jar'
+   # 添加一个存储空间
+   VOLUME /tmp
    
-   # 对外暴露的端口
+   # 暴露端口
    EXPOSE 8080
    
-   # 运行
-   ENTRYPOINT ["java", "-jar", "app.jar"] 
+   # 添加变量，如果使用 dockerfile-maven-plugin, 则会自动替换这里的变量内容
+   ARG JAR_FILE=target/code-docker.jar
+   
+   # 往容器中添加 jar 包
+   ADD ${JAR_FILE} app.jar
+   
+   # 启动镜像自动运行程序
+   
+   ENTRYPOINT ["java","-Djava.security.egd=file:/dev/urandom","-jar","/app.jar"]
+   
    ```
 
-3. 把 springboot 打的 jar 包和 Dockerfile 文件放在同一个文件夹 vueblog 下。
+   
 
-4. 进入文件夹 vueblog 下构建镜像。
+3. 把 springboot 打的包和 Dockerfile 放在一个文件夹 code-docker下。
+
+4. 进入文件夹 code-docker下构建镜像
 
    ```shell
-   docker build -t vueblog .
+   $ docker build -t code-docker .
    
    # 查看镜像
-   docker images
+   $ docker images
    
    ```
 
 5. 运行镜像
 
    ```shell
-   docker run -p 8080:8080 -d vueblog
+   $ docker run -p 8080:8080 -d code-docker --name code-docker
    
-   -p: 主机端口:容器端口
-   -d: 后台运行，并返回容器 ID
-   --name="vueblog": 为容器指定一个名称 
+      -p: 主机端口:容器端口
+      -d: 后台运行，并返回容器 ID
+      --name="vueblog": 为容器指定一个名称 
    ```
+
+   
+
+
 
