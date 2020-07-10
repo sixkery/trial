@@ -1,0 +1,27 @@
+server:
+  port: 8501
+
+spring:
+  redis:
+    host: localhost
+    # 连接超时时间（单位 duration）
+    timeout: 1000ms
+    # 默认情况下有 16 个分片，这里配置具体使用的分片
+    database: 0
+    lettuce:
+      pool:
+        # 连接池最大连接数，默认为 8 （使用负值表示没有限制）
+        max-active: 8
+        # 连接池最大阻塞等待时间，默认为 -1 （使用负值表示每有限制）
+        max-wait: -1ms
+        # 连接池最大空闲连接 默认为 8
+        max-idle: 8
+        # 连接池最小空闲连接 默认为 0
+        min-idle: 0
+  cache:
+    # 一般来说不用配置的， Spring cache 会根据依赖包自行配置
+    type: redis
+
+logging:
+  level:
+    com.sixkery: debug

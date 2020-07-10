@@ -17,6 +17,7 @@
     <modules>
         <module>code-redis</module>
         <module>code-docker</module>
+        <module>code-security</module>
     </modules>
 
     <properties>
