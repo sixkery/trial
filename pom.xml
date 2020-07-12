@@ -9,17 +9,15 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sixkery</groupId>
-    <artifactId>base</artifactId>
+    <artifactId>trial</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
     <description>Demo project for Spring Boot</description>
-
     <modules>
         <module>code-redis</module>
         <module>code-docker</module>
         <module>code-security</module>
     </modules>
-
     <properties>
         <java.version>1.8</java.version>
     </properties>
@@ -31,6 +29,4 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-
-
 </project>

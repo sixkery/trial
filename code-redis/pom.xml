@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.sixkery</groupId>
-        <artifactId>base</artifactId>
+        <artifactId>trial</artifactId>
         <version>0.0.1-SNAPSHOT</version>
     </parent>
     <artifactId>code-redis</artifactId>
@@ -39,9 +39,9 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>2.3.1.RELEASE</version>
             <scope>test</scope>
         </dependency>
+
 
         <dependency>
             <groupId>org.projectlombok</groupId>
