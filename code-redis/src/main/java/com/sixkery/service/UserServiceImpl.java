@@ -31,13 +31,13 @@ public class UserServiceImpl implements UserService {
     public User saveOrUpdate(User user) {
         DATABASES.put(user.getId(), user);
         log.info("保存用户【user】={}", user);
-        return null;
+        return user;
     }
 
     @Cacheable(value = "user", key = "#id")
     @Override
     public User get(Long id) {
-        log.info("查询用户【id】,id");
+        log.info("查询用户【id】={}", id);
         return DATABASES.get(id);
     }
 

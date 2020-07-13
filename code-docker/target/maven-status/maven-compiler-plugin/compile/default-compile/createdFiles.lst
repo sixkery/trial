@@ -9,6 +9,7 @@ com\sixkery\config\SpringMvcConfiguration$2.class
 com\sixkery\util\page\Pageable.class
 com\sixkery\service\impl\BlogServiceImpl.class
 com\sixkery\service\UserService.class
+com\sixkery\util\Array05.class
 com\sixkery\util\page\PageInfo.class
 com\sixkery\config\MybatisPlusConfig.class
 com\sixkery\model\UserModel.class
