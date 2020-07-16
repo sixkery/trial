@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/code-docker/code-docker.iml" filepath="$PROJECT_DIR$/code-docker/code-docker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/code-gen/code-gen.iml" filepath="$PROJECT_DIR$/code-gen/code-gen.iml" />
       <module fileurl="file://$PROJECT_DIR$/code-redis/code-redis.iml" filepath="$PROJECT_DIR$/code-redis/code-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/code-security/code-security.iml" filepath="$PROJECT_DIR$/code-security/code-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/trial.iml" filepath="$PROJECT_DIR$/trial.iml" />

@@ -17,6 +17,7 @@
         <module>code-redis</module>
         <module>code-docker</module>
         <module>code-security</module>
+        <module>code-gen</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
