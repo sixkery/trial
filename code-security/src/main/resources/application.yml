@@ -1,43 +1,59 @@
-# ÅäÖÃ¶Ë¿Ú
 server:
-  port: 8500
+  port: 8080
+  servlet:
+    context-path: /demo
 spring:
-  # ÅäÖÃÊı¾İÔ´
   datasource:
+    hikari:
+      username: root
+      password: root
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://101.37.77.:3306/test?serverTimezone=UTC&useUnicode=true&characterEncoding=utf-8
-    username: root
-    password: 123456
-    type: com.alibaba.druid.pool.DruidDataSource
-# JWTÅäÖÃ
+    url: jdbc:mysql://127.0.0.1:3306/spring-boot-demo?useUnicode=true&characterEncoding=UTF-8&useSSL=false&autoReconnect=true&failOverReadOnly=false&serverTimezone=GMT%2B8
+  jpa:
+    show-sql: true
+    generate-ddl: false
+    hibernate:
+      ddl-auto: validate
+    open-in-view: true
+    properties:
+      hibernate:
+      dialect: org.hibernate.dialect.MySQL57InnoDBDialect
+  resources:
+    add-mappings: false
+  mvc:
+    throw-exception-if-no-handler-found: true
+  redis:
+    host: localhost
+    port: 6379
+    # è¿æ¥è¶…æ—¶æ—¶é—´ï¼ˆè®°å¾—æ·»åŠ å•ä½ï¼ŒDurationï¼‰
+    timeout: 10000ms
+    # Redisé»˜è®¤æƒ…å†µä¸‹æœ‰16ä¸ªåˆ†ç‰‡ï¼Œè¿™é‡Œé…ç½®å…·ä½“ä½¿ç”¨çš„åˆ†ç‰‡
+    # database: 0
+    lettuce:
+      pool:
+        # è¿æ¥æ± æœ€å¤§è¿æ¥æ•°ï¼ˆä½¿ç”¨è´Ÿå€¼è¡¨ç¤ºæ²¡æœ‰é™åˆ¶ï¼‰ é»˜è®¤ 8
+        max-active: 8
+        # è¿æ¥æ± æœ€å¤§é˜»å¡ç­‰å¾…æ—¶é—´ï¼ˆä½¿ç”¨è´Ÿå€¼è¡¨ç¤ºæ²¡æœ‰é™åˆ¶ï¼‰ é»˜è®¤ -1
+        max-wait: -1ms
+        # è¿æ¥æ± ä¸­çš„æœ€å¤§ç©ºé—²è¿æ¥ é»˜è®¤ 8
+        max-idle: 8
+        # è¿æ¥æ± ä¸­çš„æœ€å°ç©ºé—²è¿æ¥ é»˜è®¤ 0
+        min-idle: 0
 jwt:
-  # ÃÜ³×KEY
-  secret: JWTSecret
-  # HeaderKEY
-  tokenHeader: Authorization
-  # TokenÇ°×º×Ö·û
-  tokenPrefix: sixkery-
-  # ¹ıÆÚÊ±¼ä µ¥Î»Ãë 1Ììºó¹ıÆÚ=86400 7Ììºó¹ıÆÚ=604800
-  expiration: 86400
-  # ÅäÖÃ²»ĞèÒªÈÏÖ¤µÄ½Ó¿Ú
-  antMatchers: /index,/login/**,/favicon.ico
-# Mybatis-plusÏà¹ØÅäÖÃ
-mybatis-plus:
-  # xmlÉ¨Ãè£¬¶à¸öÄ¿Â¼ÓÃ¶ººÅ»òÕß·ÖºÅ·Ö¸ô£¨¸æËß Mapper Ëù¶ÔÓ¦µÄ XML ÎÄ¼şÎ»ÖÃ£©
-  mapper-locations: classpath:mapper/*.xml
-  # ÒÔÏÂÅäÖÃ¾ùÓĞÄ¬ÈÏÖµ,¿ÉÒÔ²»ÉèÖÃ
-  global-config:
-    db-config:
-      #Ö÷¼üÀàĞÍ AUTO:"Êı¾İ¿âID×ÔÔö" INPUT:"ÓÃ»§ÊäÈëID",ID_WORKER:"È«¾ÖÎ¨Ò»ID (Êı×ÖÀàĞÍÎ¨Ò»ID)", UUID:"È«¾ÖÎ¨Ò»ID UUID";
-      id-type: AUTO
-      #×Ö¶Î²ßÂÔ IGNORED:"ºöÂÔÅĞ¶Ï"  NOT_NULL:"·Ç NULL ÅĞ¶Ï")  NOT_EMPTY:"·Ç¿ÕÅĞ¶Ï"
-      field-strategy: NOT_EMPTY
-      #Êı¾İ¿âÀàĞÍ
-      db-type: MYSQL
-  configuration:
-    # ÊÇ·ñ¿ªÆô×Ô¶¯ÍÕ·åÃüÃû¹æÔòÓ³Éä:´ÓÊı¾İ¿âÁĞÃûµ½JavaÊôĞÔÍÕ·åÃüÃûµÄÀàËÆÓ³Éä
-    map-underscore-to-camel-case: true
-    # ·µ»ØmapÊ±true:µ±²éÑ¯Êı¾İÎª¿ÕÊ±×Ö¶Î·µ»ØÎªnull,false:²»¼ÓÕâ¸ö²éÑ¯Êı¾İÎª¿ÕÊ±£¬×Ö¶Î½«±»Òş²Ø
-    call-setters-on-nulls: true
-    # Õâ¸öÅäÖÃ»á½«Ö´ĞĞµÄsql´òÓ¡³öÀ´£¬ÔÚ¿ª·¢»ò²âÊÔµÄÊ±ºò¿ÉÒÔÓÃ
-    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  config:
+    key: sixkery
+    expired: 600000
+    remember: 604800000
+logging:
+  level:
+    com.sixkery: debug
+custom:
+  config:
+    ignores:
+      # éœ€è¦è¿‡æ»¤çš„ post è¯·æ±‚
+      post:
+        - "/api/auth/login"
+        - "/api/auth/logout"
+      # éœ€è¦è¿‡æ»¤çš„è¯·æ±‚ï¼Œä¸é™æ–¹æ³•
+      pattern:
+        - "/test/*"
