@@ -6,10 +6,6 @@ import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.List;
-
 /**
  * @author sixkery
  * @date 2020/7/10
@@ -52,20 +48,6 @@ public class UserServiceImplTest extends CodeRedisApplicationTests {
         log.info("user={}", user);
         // 删除，查看redis是否存在缓存数据
         userService.delete(1L);
-    }
-
-    @Test
-    public void leetCode() {
-         List<Integer> nums = Arrays.asList(0,0,4,2,5,0,3,0);
-
-            int k = 0;
-            Integer zero = new Integer(0);
-            while (k < nums.size()) {
-                if (nums.get(k).equals(zero))
-                    nums.remove(k);
-                k++;
-            }
-
     }
 
 }

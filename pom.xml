@@ -18,6 +18,7 @@
         <module>code-docker</module>
         <module>code-security</module>
         <module>code-gen</module>
+        <module>code-swagger</module>
     </modules>
     <properties>
         <java.version>1.8</java.version>
