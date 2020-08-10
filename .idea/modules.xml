@@ -7,7 +7,7 @@
       <module fileurl="file://$PROJECT_DIR$/code-redis/code-redis.iml" filepath="$PROJECT_DIR$/code-redis/code-redis.iml" />
       <module fileurl="file://$PROJECT_DIR$/code-security/code-security.iml" filepath="$PROJECT_DIR$/code-security/code-security.iml" />
       <module fileurl="file://$PROJECT_DIR$/code-swagger/code-swagger.iml" filepath="$PROJECT_DIR$/code-swagger/code-swagger.iml" />
-      <module fileurl="file://$PROJECT_DIR$/trial.iml" filepath="$PROJECT_DIR$/trial.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/trial.iml" filepath="$PROJECT_DIR$/.idea/trial.iml" />
     </modules>
   </component>
 </project>
