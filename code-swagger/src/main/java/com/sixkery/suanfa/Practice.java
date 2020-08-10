@@ -3,6 +3,8 @@ package com.sixkery.suanfa;
 import java.util.Arrays;
 
 /**
+ * 基本排序算法，插入排序，冒泡排序，选择排序
+ *
  * @author sixkery
  * @date 2020/8/10
  */
@@ -48,6 +50,7 @@ public class Practice {
         System.out.println(Arrays.toString(ins));
     }
 
+    //  选择排序
     private static void chooseArray(Integer[] ins) {
         //外层循环次数是数组长度减一,从索引0开始
         for (int i = 0; i < ins.length - 1; i++) {
